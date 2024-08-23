@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Multilíngue</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    .lang-button {
+    background: #2d2d2d;
+    color: white;
+    padding: 0.3em 0.6em; 
+    display: inline-block;
+    border: 3px solid transparent;
+    position: relative;
+    font-size: 1em; 
+    cursor: pointer;
+    letter-spacing: 0.07em;
+    text-decoration: none;
+    overflow: hidden;
+    transition: color 0.4s ease;
+  }
+
+/* Container para os botões */
+.button-container {
+  display: flex;
+  justify-content: center; /* Centraliza os botões horizontalmente */
+  gap: 30px; /* Espaçamento entre os botões */
+  margin-top: 20px; /* Espaçamento superior (ajuste conforme necessário) */
+}
+
+/* Estilos para Botões de Projetos e Habilidades */
+.project-skill-button {
+  display: inline-block; /* Coloca os botões lado a lado */
+  width: 150px; /* Ajuste a largura do botão */
+  height: 40px; /* Ajuste a altura do botão */
+  line-height: 40px; /* Ajuste a altura da linha para centralizar o texto verticalmente */
+  font-size: 18px; /* Ajuste o tamanho da fonte */
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #fff; /* Cor do texto (branco) */
+  background: #2d2d2d;
+  border: 3px solid #2d2d2d; 
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+}
+
+.project-skill-button span {
+  position: relative;
+  z-index: 2;
+}
+
+.project-skill-button:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #f26522;
+  transition: all 0.35s;
+}
+
+.project-skill-button:hover {
+  color: #fff;
+}
+
+.project-skill-button:hover:after {
+  width: 100%;
+}
+
+
+  .lang-button:hover {
+    color: #f26522;
+  }
+
+  .lang-button:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #f26522;
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: 1;
+  }
+
+  .lang-button:hover:before {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+
+  .lang-button .text {
+    position: relative;
+    z-index: 2; /* Para garantir que o texto fique acima da borda */
+    transform: translate3d(0, 0.3em, 0); /* Ajuste a posição vertical do texto */
+    display: block;
+    transition: transform 0.4s cubic-bezier(.2, 0, 0, 1) 0.4s;
+  }
+
+  .lang-button:hover .text {
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.6s cubic-bezier(.2, 0, 0, 1) 0.4s;
+  }
+
+    .lang-button:after {
+        position: absolute;
+        content: '';
+        bottom: -3px;
+        left: 0.6em;
+        right: 0.6em;
+        height: 3px;
+        background: #f26522;
+        transition: transform 0.8s cubic-bezier(1,0,.37,1) 0.2s, right 0.2s cubic-bezier(.04,.48,0,1) 0.6s, left 0.4s cubic-bezier(.04,.48,0,1) 0.6s;
+        transform-origin: left;
+    }
+
+    .lang-button .line {
+        position: absolute;
+        background: #f26522;
+    }
+
+    .lang-button .line.-right,
+    .lang-button .line.-left {
+        width: 3px;
+        bottom: -3px;
+        top: -3px;
+        transform: scale3d(1,0,1);
+    }
+
+    .lang-button .line.-top,
+    .lang-button .line.-bottom {
+        height: 3px;
+        left: -3px;
+        right: -3px;
+        transform: scale3d(0,1,1);
+    }
+
+    .lang-button .line.-right {
+        right: -3px;
+        transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.23s;
+        transform-origin: top;
+    }
+
+    .lang-button .line.-top {
+        top: -3px;
+        transition: transform 0.08s linear 0.43s;
+        transform-origin: left;
+    }
+
+    .lang-button .line.-left {
+        left: -3px;
+        transition: transform 0.08s linear 0.51s;
+        transform-origin: bottom;
+    }
+
+    .lang-button .line.-bottom {
+        bottom: -3px;
+        transition: transform 0.3s cubic-bezier(1,0,.65,1.01);
+        transform-origin: right;
+    }
+
+    .lang-button:hover .text {
+        transform: translate3d(0,0,0);
+        transition: transform 0.6s cubic-bezier(.2,0,0,1) 0.4s;
+    }
+
+    .lang-button:hover:after {
+        transform: scale3d(0,1,1);
+        right: -3px;
+        left: -3px;
+        transform-origin: right;
+        transition: transform 0.2s cubic-bezier(1,0,.65,1.01) 0.17s, right 0.2s cubic-bezier(1,0,.65,1.01), left 0s 0.3s;
+    }
+
+    .lang-button:hover .line {
+        transform: scale3d(1,1,1);
+    }
+
+    .lang-button:hover .line.-right {
+        transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.2s;
+        transform-origin: bottom;
+    }
+
+    .lang-button:hover .line.-top {
+        transition: transform 0.08s linear 0.4s;
+        transform-origin: right;
+    }
+
+    .lang-button:hover .line.-left {
+        transition: transform 0.08s linear 0.48s;
+        transform-origin: top;
+    }
+
+    .lang-button:hover .line.-bottom {
+        transition: transform 0.5s cubic-bezier(0,.53,.29,1) 0.56s;
+        transform-origin: left;
+    }
+        /* Estilo da Barra de Navegação */
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Links da Navegação */
+.nav-link {
+    color: #ffffff;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #f26522;
+}
+
+/* Suave transição entre as seções */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Estilo da marca do site (navbar-brand) */
+.navbar-brand {
+    color: #f26522;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-brand:hover {
+    color: #ffffff;
+}
+
+/* Responsividade para Mobile */
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+        .about-section, .projects-section {
+            padding: 0px 0;
+            text-align: center;
+        }
+
+        .about-section h2, .projects-section h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .about-section img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #333;
+            margin-bottom: 20px;
+        }
+
+        .about-section p, .projects-section p {
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+            line-height: 1.6;
+        }
+
+        .language-selector {
+            margin-bottom: 30px;
+        }
+/* Fiz a inclusão, porem não funcionou como esperado, vou deixar o código para depois aprimorar */
+.card img {
+    object-fit: cover;
+    height: 200px; /* Define a altura fixa para todas as imagens */
+    width: 100%; /* Garante que a imagem preencha a largura do cartão */
+    border-bottom: 1px solid #ddd; /* Opcional: Adiciona uma borda inferior para separar a imagem do texto */
+}
+
+/* Estilo das Imagens na Seção Habilidades */
+.habilidade-card img {
+    object-fit: cover;
+    height: 200px; /* Define a altura fixa para todas as imagens */
+    width: 100%; /* Garante que a imagem preencha a largura do cartão */
+    border-bottom: 1px solid #ddd; /* Opcional: Adiciona uma borda inferior para separar a imagem do texto */
+}
+/* Estilo do Contêiner dos Cartões - Projetos */
+.projects-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cartões se movam para a linha seguinte se necessário */
+    gap: 20px; /* Espaço entre os cartões */
+}
+
+/* Estilo dos Cartões - Projetos */
+.card {
+    flex: 1 1 calc(33.333% - 20px); /* Ajusta a largura dos cartões para 3 na linha */
+    display: flex;
+    flex-direction: column; /* Faz o conteúdo do cartão ser empilhado verticalmente */
+    justify-content: space-between; /* Alinha o conteúdo para preencher o cartão */
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 0; /* Remove a margem inferior dos cartões para alinhamento consistente */
+    min-height: 350px; /* Define uma altura mínima para garantir que todos os cartões tenham pelo menos essa altura */
+}
+/* Estilo do Contêiner dos Cartões - Habilidades */
+.habilidades-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cartões por linha */
+    gap: 20px; /* Espaço entre os cartões */
+}
+
+/* Estilo dos Cartões - Habilidades */
+.habilidade-card {
+    display: flex;
+    flex-direction: column; /* Faz o conteúdo do cartão ser empilhado verticalmente */
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box; /* Inclui padding e border na largura e altura total do cartão */
+}
+
+/* Estilo das Imagens dos Cartões - Habilidades */
+.habilidade-card img {
+    object-fit: cover;
+    height: 200px; /* Altura fixa para a imagem */
+    width: 100%; /* Garante que a imagem preencha a largura do cartão */
+    border-bottom: 1px solid #ddd; /* Opcional: Adiciona uma borda inferior para separar a imagem do texto */
+}
+
+/* Estilo do Texto nos Cartões - Habilidades */
+.habilidade-card h5 {
+    font-size: 1.25rem; /* Tamanho do título */
+    margin: 10px 0; /* Margem superior e inferior do título */
+}
+
+.habilidade-card p {
+    font-size: 1rem; /* Tamanho do texto */
+    margin-bottom: 10px; /* Margem inferior do texto */
+    flex: 1; /* Faz o parágrafo preencher o espaço restante no cartão */
+}
+
+    </style>
+</head>
+<body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home" data-lang="en">My Portfolio</a>
+            <a class="navbar-brand" href="#home" data-lang="pt" style="display:none;">Meu Portfólio</a>
+            <a class="navbar-brand" href="#home" data-lang="es" style="display:none;">Mi Portafolio</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre" data-lang="en">Home</a>
+                        <a class="nav-link" href="#sobre" data-lang="pt" style="display:none;">Início</a>
+                        <a class="nav-link" href="#sobre" data-lang="es" style="display:none;">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre" data-lang="en">About</a>
+                        <a class="nav-link" href="#sobre" data-lang="pt" style="display:none;">Sobre</a>
+                        <a class="nav-link" href="#sobre" data-lang="es" style="display:none;">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projetos" data-lang="en">Projects</a>
+                        <a class="nav-link" href="#projetos" data-lang="pt" style="display:none;">Projetos</a>
+                        <a class="nav-link" href="#projetos" data-lang="es" style="display:none;">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#habilidades" data-lang="en">Skills</a>
+                        <a class="nav-link" href="#habilidades" data-lang="pt" style="display:none;">Habilidades</a>
+                        <a class="nav-link" href="#habilidades" data-lang="es" style="display:none;">Habilidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato" data-lang="en">Contact</a>
+                        <a class="nav-link" href="#contato" data-lang="pt" style="display:none;">Contato</a>
+                        <a class="nav-link" href="#contato" data-lang="es" style="display:none;">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <!-- Seleção de Idioma -->
+    <div class="language-selector text-center">
+        <a class="lang-button" onclick="changeLanguage('en')">
+            <span class="text">English</span>
+            <span class="line -right"></span>
+            <span class="line -top"></span>
+            <span class="line -left"></span>
+            <span class="line -bottom"></span>
+        </a>
+        <a class="lang-button" onclick="changeLanguage('pt')">
+            <span class="text">Português</span>
+            <span class="line -right"></span>
+            <span class="line -top"></span>
+            <span class="line -left"></span>
+            <span class="line -bottom"></span>
+        </a>
+        <a class="lang-button" onclick="changeLanguage('es')">
+            <span class="text">Español</span>
+            <span class="line -right"></span>
+            <span class="line -top"></span>
+            <span class="line -left"></span>
+            <span class="line -bottom"></span>
+        </a>
+
+    <!-- Seção Sobre -->
+    <section id='sobre'class="about-section">
+        <div class="container">
+            <h2 data-lang="en">About</h2>
+            <h2 data-lang="pt" style="display:none;">Sobre</h2>
+            <h2 data-lang="es" style="display:none;">Sobre</h2>
+
+            <img src="images/about/about.jpg" alt="Imagem de Perfil">
+
+            <p data-lang="en">Hello! My name is Cezar Au Bento, and my professional journey has been marked by a career transition that reflects my passion for science, data, and problem-solving. I hold a degree in Physics from the State University of Santa Catarina and a postgraduate degree in Data Science from Universidade Descomplica, where I developed deep knowledge in data analysis, Python, and its major libraries geared towards data science.
+                My expertise also extends to SQL, dashboard creation, and data storytelling, areas in which I find particular fulfillment, especially when it comes to statistics and visual insights through graphs. Additionally, I have knowledge in Web Development, allowing me to have a holistic understanding of data structure and presentation on the web.
+                I am passionate about learning and constantly enhancing my knowledge, staying up to date with the latest trends and advancements in technology. I have knowledge in machine learning, deep learning, AI prompts, and other tools in this new world of artificial intelligence. I am always exploring new technologies to expand my skills and offer innovative solutions.
+                Before entering the field of data science, I was a managing partner in a company and a teacher. These experiences provided me with valuable skills in management, communication, and teaching, which I apply daily in my current career. I am naturally communicative and curious, with a keen instinct for investigation and research, and I take great pleasure in solving challenging problems.
+                Whether in developing data models, creating meaningful visualizations, or seeking valuable insights, I am always ready to use my skills and knowledge to add value and contribute positively to any project I am involved in.</p>
+            <p data-lang="pt" style="display:none;">Olá! Meu nome é Cezar Au Bento, e minha trajetória profissional é marcada por uma transição de carreira que reflete minha paixão por ciência, dados e resolução de problemas. Sou formado em Física pela Universidade do Estado de Santa Catarina e pós-graduado em Ciência de Dados pela Universidade Descomplica, onde desenvolvi um profundo conhecimento em análise de dados, Python, e suas principais bibliotecas voltadas para a ciência de dados.
+                Minha expertise abrange também SQL, criação de dashboards, e storytelling com dados, áreas nas quais me sinto particularmente realizado, especialmente quando se trata de estatística e insights visuais por meio de gráficos. Além disso, possuo conhecimento em Desenvolvimento Web, o que me permite ter uma compreensão holística da estrutura e apresentação de dados na web.
+                Sou apaixonado por aprender e estou em constante aprimoramento dos meus conhecimentos, mantendo-me atualizado com as últimas tendências e avanços na área de tecnologia. Tenho conhecimento em machine learning, deep learning, prompts de IA, e outras ferramentas desse novo universo das inteligências artificiais. Estou sempre explorando novas tecnologias para ampliar minhas habilidades e oferecer soluções inovadoras.
+                Antes de ingressar no campo da ciência de dados, fui sócio administrativo de uma empresa e professor. Essas experiências me proporcionaram habilidades valiosas em gestão, comunicação e ensino, que aplico diariamente em minha carreira atual. Sou uma pessoa naturalmente comunicativa e curiosa, com um instinto aguçado para investigação e pesquisa, e tenho um grande prazer na busca de soluções para problemas desafiadores.
+                Seja no desenvolvimento de modelos de dados, na criação de visualizações significativas, ou na busca por insights valiosos, estou sempre pronto para utilizar minhas habilidades e conhecimentos para agregar valor e contribuir positivamente para qualquer projeto em que esteja envolvido.</p>
+            <p data-lang="es" style="display:none;">¡Hola! Mi nombre es Cezar Au Bento, y mi trayectoria profesional ha estado marcada por una transición de carrera que refleja mi pasión por la ciencia, los datos y la resolución de problemas. Soy licenciado en Física por la Universidad del Estado de Santa Catarina y tengo un posgrado en Ciencia de Datos por la Universidad Descomplica, donde desarrollé un profundo conocimiento en análisis de datos, Python, y sus principales bibliotecas orientadas a la ciencia de datos.
+                Mi experiencia también abarca SQL, la creación de dashboards y el storytelling con datos, áreas en las que encuentro una realización particular, especialmente cuando se trata de estadísticas e insights visuales a través de gráficos. Además, tengo conocimientos en Desarrollo Web, lo que me permite tener una comprensión holística de la estructura y presentación de datos en la web.
+                Soy un apasionado del aprendizaje y estoy en constante mejora de mis conocimientos, manteniéndome actualizado con las últimas tendencias y avances en tecnología. Tengo conocimientos en machine learning, deep learning, prompts de IA y otras herramientas de este nuevo universo de inteligencias artificiales. Siempre estoy explorando nuevas tecnologías para ampliar mis habilidades y ofrecer soluciones innovadoras.
+                Antes de ingresar al campo de la ciencia de datos, fui socio administrativo de una empresa y profesor. Estas experiencias me proporcionaron habilidades valiosas en gestión, comunicación y enseñanza, que aplico diariamente en mi carrera actual. Soy una persona naturalmente comunicativa y curiosa, con un instinto agudo para la investigación, y disfruto enormemente de la búsqueda de soluciones a problemas desafiantes.
+                Ya sea en el desarrollo de modelos de datos, en la creación de visualizaciones significativas, o en la búsqueda de insights valiosos, siempre estoy listo para utilizar mis habilidades y conocimientos para agregar valor y contribuir positivamente a cualquier proyecto en el que esté involucrado.</p>
+
+        
+        </div>
+    </section>
+
+    <!-- Seção Projetos -->
+    <section id='projetos'class="projects-section">
+        <div class="container">
+            <h2 data-lang="en">Projects</h2>
+            <h2 data-lang="pt" style="display:none;">Projetos</h2>
+            <h2 data-lang="es" style="display:none;">Proyectos</h2>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/projects/1.jpg" class="card-img-top" alt="Projeto 1">
+                        <div class="card-body">
+                            <h5 class="card-title" data-lang="en">Houses</h5>
+                            <h5 class="card-title" data-lang="pt" style="display:none;">Casas</h5>
+                            <h5 class="card-title" data-lang="es" style="display:none;">Casas</h5>
+                            <p class="card-text" data-lang="en">The goal is to predict house sale prices based on a dataset of house characteristics. Using advanced regression techniques, predictive models were developed to estimate sale prices. The model aims to provide accurate predictions and insights into the factors influencing property values.</p>
+                            <p class="card-text" data-lang="pt" style="display:none;">O objetivo é prever os preços de venda de imóveis com base em um conjunto de dados sobre características das casas. Utilizando técnicas avançadas de regressão, foram desenvolvidos modelos preditivos para estimar os preços de venda. O modelo visa fornecer previsões precisas e insights sobre os fatores que influenciam o valor dos imóveis.</p>
+                            <p class="card-text" data-lang="es" style="display:none;">El objetivo es predecir los precios de venta de inmuebles basándose en un conjunto de datos sobre las características de las casas. Utilizando técnicas avanzadas de regresión, se desarrollaron modelos predictivos para estimar los precios de venta. El modelo busca proporcionar predicciones precisas e información sobre los factores que influyen en el valor de las propiedades.</p>
+                            <a href="https://github.com/cezarcobaink/Python---Kaggle/blob/master/Houses/Readme.md" class="project-skill-button" target="_blank"><span>Readme</span></a>
+                            <a href="https://github.com/cezarcobaink/Python---Kaggle/blob/master/Houses/house.ipynb" class="project-skill-button" target="_blank"><span>Code</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/projects/2.jpg" class="card-img-top" alt="Projeto 2">
+                        <div class="card-body">
+                            <h5 class="card-title" data-lang="en">Students</h5>
+                            <h5 class="card-title" data-lang="pt" style="display:none;">Estudantes</h5>
+                            <h5 class="card-title" data-lang="es" style="display:none;">Estudiantes</h5>
+                            <p class="card-text" data-lang="en">The goal was to predict the academic risk of students in higher education. Machine learning techniques, such as regression and decision trees, were used to create models that identify which students are at higher risk of academic difficulties. The model will help the institution provide more effective support to students.</p>
+                            <p class="card-text" data-lang="pt" style="display:none;">O objetivo foi prever o risco acadêmico de estudantes no ensino superior. Foi utilizado técnicas de machine learning, como regressão e árvores de decisão, para criar modelos que identifiquem quais alunos estão em maior risco de dificuldades acadêmicas. O modelo ajudará a instituição a oferecer suporte mais eficaz aos alunos.</p>
+                            <p class="card-text" data-lang="es" style="display:none;">El objetivo fue predecir el riesgo académico de los estudiantes en educación superior. Se utilizaron técnicas de machine learning, como regresión y árboles de decisión, para crear modelos que identifiquen qué estudiantes están en mayor riesgo de dificultades académicas. El modelo ayudará a la institución a ofrecer un apoyo más eficaz a los alumnos.</p>
+                            <a href="#"class="project-skill-button" target="_blank"><span>Readme</span></a>
+                            <a href="https://github.com/cezarcobaink/Competicao/tree/master/playground" class="project-skill-button" target="_blank"><span>Code</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/projects/3.jpg" class="card-img-top" alt="Projeto 3">
+                        <div class="card-body">
+                            <h5 class="card-title" data-lang="en">Spaceship Titanic</h5>
+                            <h5 class="card-title" data-lang="pt" style="display:none;">Titanic Espacial</h5>
+                            <h5 class="card-title" data-lang="es" style="display:none;">Titanic Espacial</h5>
+                            <p class="card-text" data-lang="en">The goal was to predict which passengers were lost during a space voyage. Using a dataset with information about the passengers, predictive models were developed to identify those who are more likely not to have survived. The model aims to provide valuable insights into the factors influencing survival during the voyage.</p>
+                            <p class="card-text" data-lang="pt" style="display:none;">O objetivo foi prever quais passageiros foram perdidos durante uma viagem espacial. Utilizando um conjunto de dados com informações sobre os passageiros,foi desenvolvido modelos preditivos para identificar aqueles que têm maior probabilidade de não ter sobrevivido. O modelo visa fornecer insights valiosos para entender os fatores que influenciam a sobrevivência na viagem.</p>
+                            <p class="card-text" data-lang="es" style="display:none;">El objetivo fue predecir qué pasajeros se perdieron durante un viaje espacial. Utilizando un conjunto de datos con información sobre los pasajeros, se desarrollaron modelos predictivos para identificar aquellos que tienen mayor probabilidad de no haber sobrevivido. El modelo busca proporcionar información valiosa sobre los factores que influyen en la supervivencia durante el viaje.</p>
+                            <a href="#"class="project-skill-button" target="_blank"><span>Readme</span></a>
+                            <a href="https://github.com/cezarcobaink/Competicao/tree/master/Spaceship%20Titanic" class="project-skill-button" target="_blank"><span>Code</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="habilidades" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Habilidades</h2>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="images/skills/1.png" class="card-img-top mx-auto" alt="Python Icon" style="width: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title">Python</h5>
+                            <p class="card-text" data-lang="en">Experience in data manipulation with Pandas, calculations with NumPy, visualization with Matplotlib and Seaborn. Proficient in machine learning with Scikit-Learn and deep learning with TensorFlow and Keras. Skills in automation, natural language processing with NLTK, and API integration.</p>
+                            <p class="card-text" data-lang="pt"  style="display: none;">Experiência em manipulação de dados com Pandas, cálculos com NumPy, visualização com Matplotlib e Seaborn. Proficiente em aprendizado de máquina com Scikit-Learn e deep learning com TensorFlow e Keras. Habilidades em automação, processamento de linguagem natural com NLTK e integração com APIs.</p>
+                            <p class="card-text" data-lang="es" style="display: none;">Experiencia en manipulación de datos con Pandas, cálculos con NumPy, visualización con Matplotlib y Seaborn. Experto en aprendizaje automático con Scikit-Learn y aprendizaje profundo con TensorFlow y Keras. Habilidades en automatización, procesamiento de lenguaje natural con NLTK e integración con APIs.</p>
+                            <a href="https://github.com/cezarcobaink/Python---Kaggle" class="project-skill-button" target="_blank"><span>Repositório GitHub</span></a>
+                        </div>
+                    </div>
+                </div>
+            
+    
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="images/skills/2.png" class="card-img-top mx-auto" alt="Data Visualization Icon" style="width: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title" data-lang="en">Data Visualization</h5>
+                            <h5 class="card-title" data-lang="pt" style="display:none;">Visualização de Dados</h5>
+                            <h5 class="card-title" data-lang="es" style="display:none;">Visualización de Datos</h5>
+                            <p class="card-text" data-lang="en">Skilled in creating graphical and interactive data representations, such as charts and maps, for effective analysis and interpretation. Experience with dashboards for real-time monitoring and detailed reporting, using tools like Tableau, Power BI, and matplotlib to provide actionable insights and data-driven decisions.</p>
+                            <p class="card-text" data-lang="pt" style="display: none;">Habilidade em criar representações gráficas e interativas de dados, como gráficos e mapas, para análise e interpretação eficaz. Experiência com dashboards para monitoramento em tempo real e relatórios detalhados, utilizando ferramentas como Tableau, Power BI e matplotlib para insights acionáveis e decisões baseadas em dados.</p>
+                            <p class="card-text" data-lang="es" style="display: none;">Habilidad en crear representaciones gráficas e interactivas de datos, como gráficos y mapas, para un análisis e interpretación efectivos. Experiencia con dashboards para monitoreo en tiempo real e informes detallados, utilizando herramientas como Tableau, Power BI y matplotlib para obtener insights accionables y decisiones basadas en datos.</p>
+                            <a href="#" class="project-skill-button" target="_blank"><span>Repositório GitHub</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="images/skills/3.png" class="card-img-top mx-auto" alt="SQL Icon" style="width: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title" data-lang="en">SQL</h5>
+                            <h5 class="card-title" data-lang="pt" style="display:none;">SQL</h5>
+                            <h5 class="card-title" data-lang="es" style="display:none;">SQL</h5>
+                            <p class="card-text" data-lang="en">Skilled in writing and optimizing SQL queries to extract, manipulate, and analyze data. Experience with relational databases, schema design, and stored procedures to provide accurate and efficient insights in data science projects.</p>
+                            <p class="card-text" data-lang="pt" style="display: none;">Habilidade em escrever e otimizar consultas SQL para extrair, manipular e analisar dados. Experiência com bancos de dados relacionais, criação de esquemas, e implementação de procedimentos armazenados para fornecer insights precisos e eficientes em projetos de ciência de dados.</p>
+                            <p class="card-text" data-lang="es" style="display: none;">Habilidad en escribir y optimizar consultas SQL para extraer, manipular y analizar datos. Experiencia con bases de datos relacionales, diseño de esquemas e implementación de procedimientos almacenados para proporcionar insights precisos y eficientes en proyectos de ciencia de datos.</p>
+                            <a href="#" class="project-skill-button" target="_blank"><span>Repositório GitHub</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="images/skills/4.png" class="card-img-top mx-auto" alt="Data Storytelling Icon" style="width: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title" data-lang="en">Web Development</h5>
+                            <h5 class="card-title" data-lang="pt" style="display:none;">Desenvolvimento Web</h5>
+                            <h5 class="card-title" data-lang="es" style="display:none;">Desarrollo Web</h5>
+                            <p class="card-text" data-lang="en">Skilled in HTML, CSS, PHP, and JavaScript for creating and maintaining dynamic, responsive websites. Experience in both frontend and backend development, including API integration, performance optimization, and implementing interactive features for an efficient and engaging user experience.</p>
+                            <p class="card-text" data-lang="pt" style="display: none;">Proficiente em HTML, CSS, PHP e JavaScript para criar e manter sites dinâmicos e responsivos. Experiência em desenvolvimento frontend e backend, incluindo integração de APIs, otimização de desempenho e implementação de funcionalidades interativas para uma experiência de usuário eficiente e atraente.</p>
+                            <p class="card-text" data-lang="es" style="display: none;">Competente en HTML, CSS, PHP y JavaScript para crear y mantener sitios web dinámicos y responsivos. Experiencia en desarrollo frontend y backend, incluyendo integración de APIs, optimización de rendimiento e implementación de funcionalidades interactivas para una experiencia de usuario eficiente y atractiva.</p>
+                            <a href="#" class="project-skill-button" target="_blank"><span>Repositório GitHub</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contato" class="py-5" style="background-color: #333; color: white;">
+        <div class="container">
+            <h2 class="text-center mb-4">Entre em Contato</h2>
+            <div class="row text-center mb-4">
+                <div class="col-md-6">
+                    <p><i class="bi bi-envelope" style="font-size: 1.5rem;"></i> cezar.dados@gmail.com</p>
+                </div>
+                <div class="col-md-6">
+                    <p><i class="bi bi-telephone" style="font-size: 1.5rem;"></i> +55 47 98815-6028</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="https://www.linkedin.com/in/seulinkedin" class="btn btn-circle btn-pink" data-bs-toggle="tooltip" data-bs-placement="top" title="LinkedIn">
+                    <img src="icons/linkedin.png" alt="LinkedIn" style="width: 30px;">
+                </a>
+                <a href="https://twitter.com/seutwitter" class="btn btn-circle btn-pink mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter">
+                    <img src="icons/twitter.png" alt="Twitter" style="width: 30px;">
+                </a>
+                <a href="https://github.com/seugit" class="btn btn-circle btn-pink mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="GitHub">
+                    <img src="icons/github.png" alt="GitHub" style="width: 30px;">
+                </a>
+                <a href="https://medium.com/@seumedium" class="btn btn-circle btn-pink mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Medium">
+                    <img src="icons/medium.png" alt="Medium" style="width: 30px;">
+                </a>
+                <a href="https://youtube.com/seuyoutube" class="btn btn-circle btn-pink mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="YouTube">
+                    <img src="icons/youtube.png" alt="YouTube" style="width: 30px;">
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-lang]');
+
+            elements.forEach(el => {
+                if (el.getAttribute('data-lang') === lang) {
+                    el.style.display = '';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
